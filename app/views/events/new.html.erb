@@ -1,0 +1,31 @@
+<h4>Create event</h4>
+<% provide(:title, 'Create event') %>
+<% provide(:button_text, 'Create my new event') %>
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="left_box" style="width:60%;">
+    <%= f.label :title, style: "margin-left:40%" %>
+    <%= f.text_field :title, class: 'form-control', style: "width:50%;margin-left:40%" %>
+    <%= f.label :info, style: "margin-left:40%" %>
+    <%= f.text_field :info, class: 'form-control', style: "width:50%;margin-left:40%" %>
+    <%= f.label :location, style: "margin-left:40%" %>
+    <%= f.text_field :location, class: 'form-control', style: "width:50%;margin-left:40%" %>
+    <%= f.label :date, style: "margin-left:53%" %>
+    <%= f.date_field :date, class: 'form-control', style: "width:25%;margin-left:53%" %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary", style: "width:40%;margin-left:45%" %>
+  </div>
+  <div class="right_box" style="width:40%;">
+    <%= f.label 'invite friends' %>
+    <% @users.each do |user| %>
+      <div id="row">
+        <div id="check_cell">
+          <%= check_box_tag 'attendees[]', user.id %>
+        </div>
+        <div id="name_cell">
+          <h5><%= user.name %></h5>
+        </div>
+      </div>
+    <% end %>
+    <%= hidden_field_tag 'attendees[]', '0' %>
+  </div>
+<% end %>

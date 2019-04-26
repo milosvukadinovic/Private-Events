@@ -1,12 +1,10 @@
-<% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Create event", new_event_url %>
-  <%= link_to "Log Out", logout_path %>
-<% else %>
-  <%= link_to "Sign Up", signup_path %> or 
-  <%= link_to "Log In", login_path %>
-  
-<% end %>
-<p id="notice"><%= notice %></p>
-<h1>Example</h1>
-<p>Lorem ipsum …</p>
+<% provide(:title, 'Home') %>
+<div class="box">
+  <div class="big_container">
+    <h1>Private Parties!</h1>
+    <h2>A Rails events creator.</h2>
+    
+      <%= render 'shared/demo_message', size: 'p_small', link_on: true %>
+    </div>
+  </div>
+</div>
